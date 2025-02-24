@@ -19,7 +19,15 @@ return {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- Mason must be loaded before its dependents so we need to set it up here.
       -- NOTE: `opts = {}` is the same as calling `require('mason').setup({})`
-      { 'williamboman/mason.nvim', opts = {} },
+      {
+        'williamboman/mason.nvim',
+        opts = {
+          registries = {
+            'github:mason-org/mason-registry',
+            'github:Crashdummyy/mason-registry',
+          },
+        },
+      },
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
 
@@ -236,6 +244,51 @@ return {
             },
           },
         },
+
+        angularls = {},
+        azure_pipelines_ls = {},
+        bashls = {},
+        cssls = {
+          provideFormatter = false,
+        },
+        css_variables = {},
+        custom_elements_ls = {
+          filetypes = { 'typescript', 'typescriptreact' },
+        },
+        diagnosticls = {},
+        docker_compose_language_service = {},
+        dockerls = {},
+        html = {
+          init_options = {
+            provideFormatter = false,
+          },
+        },
+        jsonls = {
+          init_options = {
+            provideFormatter = false,
+          },
+        },
+        marksman = {},
+        sqlls = {},
+        tailwindcss = {},
+        ts_ls = {
+          init_options = {
+            plugins = {
+              name = '@vue/typescript-plugin',
+              location = os.getenv 'HOME' .. '/.local/share/fnm/node-versions/v22.11.0/installation/lib/node_modules/@vue/typescript-plugin',
+              languages = { 'javascript', 'typescript', 'vue' },
+            },
+          },
+          filetypes = {
+            'javascript',
+            'javascriptreact',
+            'typescript',
+            'typescriptreact',
+            'vue',
+          },
+        },
+        volar = {},
+        yamlls = {},
       }
 
       -- Ensure the servers and tools above are installed
